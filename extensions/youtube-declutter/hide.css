@@ -1,0 +1,49 @@
+/* Injected before the page renders. Selectors track YouTube's markup and
+   will drift; when something reappears, update the selector here. */
+
+/* Home feed: blank while an in-tab navigation is redirected away. */
+ytd-browse[page-subtype="home"] {
+  visibility: hidden !important;
+}
+
+/* Suggestions column on the Watch page (side or below the video). */
+ytd-watch-flexy #related,
+ytd-watch-next-secondary-results-renderer {
+  display: none !important;
+}
+
+/* Drop the column's now-empty container and centre the video, unless it
+   still holds a playlist or live chat. */
+ytd-watch-flexy #secondary:not(:has(ytd-playlist-panel-renderer:not([hidden]), ytd-live-chat-frame:not([hidden]))) {
+  display: none !important;
+}
+
+ytd-watch-flexy #columns {
+  justify-content: center !important;
+}
+
+/* Shorts entry in the Guide, expanded and collapsed. */
+ytd-guide-entry-renderer:has(a[title="Shorts" i]),
+ytd-guide-entry-renderer:has(a[href^="/shorts"]),
+ytd-mini-guide-entry-renderer[aria-label="Shorts" i],
+ytd-mini-guide-entry-renderer:has(a[title="Shorts" i]),
+ytd-mini-guide-entry-renderer:has([aria-label="Shorts" i]),
+ytd-mini-guide-entry-renderer:has(a[href^="/shorts"]) {
+  display: none !important;
+}
+
+/* Shorts rows in feeds and search results. */
+ytd-rich-section-renderer:has(ytd-rich-shelf-renderer[is-shorts]),
+ytd-rich-shelf-renderer[is-shorts],
+ytd-reel-shelf-renderer,
+grid-shelf-view-model:has(a[href^="/shorts/"]),
+ytd-rich-item-renderer:has(a[href^="/shorts/"]),
+ytd-video-renderer:has(a[href^="/shorts/"]) {
+  display: none !important;
+}
+
+/* Shorts tab on channel pages. */
+yt-tab-shape[tab-title="Shorts"],
+tp-yt-paper-tab:has(> .tab-content[title="Shorts"]) {
+  display: none !important;
+}

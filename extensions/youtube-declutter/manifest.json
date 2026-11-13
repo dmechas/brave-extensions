@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "YouTube Declutter",
+  "version": "0.1.0",
+  "description": "Sends the Home feed to the Subscriptions feed, hides the Suggestions column and every Shorts surface.",
+  "permissions": ["declarativeNetRequestWithHostAccess"],
+  "host_permissions": ["https://www.youtube.com/*"],
+  "declarative_net_request": {
+    "rule_resources": [{ "id": "redirects", "enabled": true, "path": "rules.json" }]
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.youtube.com/*"],
+      "css": ["hide.css"],
+      "js": ["redirect.js", "content.js"],
+      "run_at": "document_start"
+    }
+  ]
+}

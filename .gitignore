@@ -1,0 +1,12 @@
+.DS_Store
+# Written by the browser when an extension is loaded unpacked
+_metadata/
+
+# Local agent tooling and notes, kept out of the repository
+.agents/
+.claude/
+.scratch/
+docs/
+CLAUDE.md
+GLOSSARY.md
+skills-lock.json
